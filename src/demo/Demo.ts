@@ -3,6 +3,9 @@ import * as THREE from 'three'
 import { Box } from './Box'
 import { Experience } from '../engine/Experience'
 import { Resource } from '../engine/Resources'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'	
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'	
+import { Cat } from '../components/Cat'
 
 export class Demo implements Experience {
   resources: Resource[] = []
@@ -26,13 +29,9 @@ export class Demo implements Experience {
     directionalLight.position.set(2, 2, 2)
 
     this.engine.scene.add(directionalLight)
-
-    const box = new Box()
-    box.castShadow = true
-    box.rotation.y = Math.PI / 4
-    box.position.set(0, 0.5, 0)
-
-    this.engine.scene.add(box)
+    const cat = new Cat();
+    cat.position.set(0, 0, 0); 
+    this.engine.scene.add(cat)
   }
 
   resize() {}
